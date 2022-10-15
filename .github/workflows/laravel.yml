@@ -25,3 +25,19 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Check Linting
         run: ./vendor/bin/pint --test
+livenessProbe:
+httpGet:
+  path: /healthz/live
+  port: 8111
+initialDelaySeconds: 15
+failureThreshold: 3
+periodSeconds: 3
+readinessProbe:
+httpGet:
+  path: /health/ready
+  port: 8111
+initialDelaySeconds: 10
+successThreshold: 1
+failureThreshold: 3
+timeoutSeconds: 1
+periodSeconds: 15

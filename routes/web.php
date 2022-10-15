@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/health/live', function () {
+    return 'ok';
+});
+
+Route::get('/health/ready', function () {
+    $check = DB::connection()->getDatabaseName();
+    if ($check > 0) {
+        return 'ok';
+    }
+    return response('no', 500);
 });
