@@ -24,7 +24,7 @@ Route::get('/health/live', function () {
 
 Route::get('/health/ready', function () {
     $check = DB::connection()->getDatabaseName();
-    if ($check > 0) {
+    if ($check) {
         return 'ok';
     }
     return response('no', 500);
