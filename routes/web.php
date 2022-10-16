@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +27,6 @@ Route::get('/health/ready', function () {
     if ($check) {
         return 'ok';
     }
-    return response('no', 500);
+
+    return false;
 });
