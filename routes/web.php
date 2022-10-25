@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\ProductsController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
