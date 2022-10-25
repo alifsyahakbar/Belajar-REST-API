@@ -21,8 +21,9 @@ class ProductsController extends Controller
             $products = Product::paginate(request('limit'));
         }
         if (request('search')) {
-            $products->where('name', 'LIKE', '%' . request('search') . '%');
+            $products->where('name', 'LIKE', '%'.request('search').'%');
         }
+
         return response()->json([
             'data' => $products,
         ]);
@@ -51,10 +52,11 @@ class ProductsController extends Controller
             'name' => 'required|max:255',
             'image' => 'required',
             'price' => 'required|numeric',
-            'stock' => 'required|numeric'
+            'stock' => 'required|numeric',
         ]);
 
         $products = Product::create($request->all());
+
         return response()->json([
             'data' => $products,
         ]);
@@ -69,8 +71,9 @@ class ProductsController extends Controller
     public function show($id)
     {
         $products = Product::find($id);
+
         return response()->json([
-            'data' => $products
+            'data' => $products,
         ]);
     }
 
